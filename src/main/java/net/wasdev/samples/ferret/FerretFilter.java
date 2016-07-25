@@ -22,7 +22,6 @@ public class FerretFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String path = req.getRequestURI().substring(req.getContextPath().length());
-		System.out.println(path);
 
 		if (path.startsWith("/static")) {
 		    chain.doFilter(request, response); // Goes to default servlet.
