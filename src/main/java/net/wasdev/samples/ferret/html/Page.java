@@ -24,6 +24,7 @@ public final class Page {
             + "<head>" //
             + "<meta charset=\"ISO-8859-1\">" //
             + "<title>Ferret</title>" //
+            + "<link rel='stylesheet' type='text/css' href='/ferret/static/style.css'>" //
             + "</head>";
 
     private static final String BODY_START = "<body>";

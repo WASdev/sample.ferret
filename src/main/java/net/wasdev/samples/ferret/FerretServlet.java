@@ -30,7 +30,6 @@ import net.wasdev.samples.ferret.html.Element.ElementType;
 import net.wasdev.samples.ferret.html.Page;
 import net.wasdev.samples.ferret.html.Table;
 
-@WebServlet("/*")
 public final class FerretServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

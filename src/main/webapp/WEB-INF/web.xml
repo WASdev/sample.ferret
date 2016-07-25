@@ -40,7 +40,7 @@
              <url-pattern>/basic/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>user</role-name> 
+            <role-name>user</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
@@ -54,5 +54,23 @@
     <security-role>
         <role-name>user</role-name>
     </security-role>
+
+    <filter>
+	    <filter-name>filter</filter-name>
+	    <filter-class>net.wasdev.samples.ferret.FerretFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>filter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+	    <servlet-name>Ferret</servlet-name>
+	    <servlet-class>net.wasdev.samples.ferret.FerretServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>Ferret</servlet-name>
+	    <url-pattern>/pages/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>

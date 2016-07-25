@@ -244,7 +244,6 @@ public final class RequestData {
 
     public Map<String, Object> getAsMap() {
         Map<String, Object> map = new TreeMap<String, Object>();
-        map.put("localPort", localPort);
         map.put("authorizationScheme", authorizationScheme);
         map.put("preferredClientLocale", preferredClientLocale);
         map.put("allClientLocales", allClientLocales);
