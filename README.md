@@ -5,6 +5,7 @@ This sample project contains a simple Servlet application called Ferret. Ferret 
 
 ## Running in Eclipse
 
+### Maven
 1. Download and install [Eclipse with the WebSphere Developer Tools](https://developer.ibm.com/wasdev/downloads/liberty-profile-using-eclipse/).
 2. Create a new Liberty Profile Server. See [step 3](https://developer.ibm.com/wasdev/downloads/liberty-profile-using-eclipse/) for details.
 3. Clone this repository.
@@ -12,8 +13,16 @@ This sample project contains a simple Servlet application called Ferret. Ferret 
 5. Deploy the sample into Liberty server. Right click on the *ferret* sample and select *Run As -> Run on Server* option. Find and select the Liberty profile server and press *Finish*. 
 6. Go to: [http://localhost:9080/ferret](http://localhost:9080/ferret)
 
-## Running with Maven
+### Gradle
+1. Go to *Help > Eclipse Marketplace > Install Buildship Gradle Integration 2.0*
+2. Clone this project and import into Eclipse as an 'Existing Gradle Project'.
+3. Go to *Window > Show View > Other > Gradle Executions & Gradle Tasks*
+4. Go to Gradle Tasks view and run `clean` in build folder, then `build` in build folder, then `libertyStart` in liberty folder.
+5. You should see the following in the console: `Application JAXWSWebSample started in XX.XX seconds.`
 
+## Running in the Command Line
+
+### Maven cmd-line
 This project can be build with [Apache Maven](http://maven.apache.org/). The project uses [Liberty Maven Plug-in][] to automatically download and install Liberty profile runtime from the [Liberty repository](https://developer.ibm.com/wasdev/downloads/). Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
 Use the following steps to run the application with Maven:
@@ -27,6 +36,21 @@ Use the following steps to run the application with Maven:
     ```bash
     $ mvn liberty:run-server
     ```
+
+Once the server is running, the application will be available under [http://localhost:9080/ferret](http://localhost:9080/ferret).
+
+### Gradle cmd-line
+The sample can be built using [Gradle](https://gradle.org/) and the [Liberty Gradle Plug-in]. In the directory where you cloned the repository issue the following command to build and run the project.
+
+    $ gradle build
+
+To start the application use the command:
+
+    $ gradle libertyStart
+
+To stop the application use the command:
+
+    $ gradle libertyStop
 
 Once the server is running, the application will be available under [http://localhost:9080/ferret](http://localhost:9080/ferret).
 
