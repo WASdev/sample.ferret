@@ -3,7 +3,7 @@ Ferret [![Build Status](https://travis-ci.org/WASdev/sample.ferret.svg?branch=ma
 
 This sample project contains a simple Servlet application called Ferret. Ferret listens for HTTP requests sent to `<host>:<port>/ferret[/*]`, and responds with information about the request and the server.
 
-## Running in Eclipse with Maven
+## Running in Eclipse
 
 ### Maven
 1. Download and install [Eclipse with the WebSphere Developer Tools](https://developer.ibm.com/wasdev/downloads/liberty-profile-using-eclipse/).
