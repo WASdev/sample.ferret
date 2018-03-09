@@ -1,0 +1,68 @@
+apply plugin: 'war'
+apply plugin: 'liberty'
+
+group = 'net.wasdev.wlp.sample'
+version = '1.3-SNAPSHOT'
+
+description = "Liberty Sample - Ferret"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.0'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+war {
+    archiveName = baseName + '.' + extension
+}
+
+ext {
+    // Liberty server properties
+    wlpServerName = 'LibertyProjectServer'
+    testServerHttpPort = 9080
+    testServerHttpsPort = 9443
+
+    warContext = 'ferret'
+}
+
+dependencies {
+    providedCompile group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version:'1.0'
+    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile7', version: '17.0.0.2'
+}
+
+liberty {
+    server {
+        configFile = file('src/main/wlp/server.xml')
+        bootstrapProperties = ['appLocation': war.baseName]
+
+        name = wlpServerName
+        apps = [war]
+    }
+}
+
+gradle.taskGraph.whenReady { graph ->
+    if (graph.hasTask(":libertyStart") && !graph.hasTask(":libertyStop")) {
+        // Doesn't know if libertyStart succeeds or not
+        libertyStart.doLast {
+            println ("The server should be running on: http://localhost:${testServerHttpPort}/${warContext}")
+        }
+    }
+}
+
+clean.dependsOn 'libertyStop'
+check.dependsOn 'libertyStart'
+check.finalizedBy 'libertyStop'
