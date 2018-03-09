@@ -20,7 +20,6 @@ This sample project contains a simple Servlet application called Ferret. Ferret 
 4. Go to Gradle Tasks view and run `clean` in build folder, then `build` in build folder, then `libertyStart` in liberty folder.
 5. You should see the following in the console: `Application ferret started in XX.XX seconds.`
 
-
 ## Running in the Command Line
 
 ### Maven cmd-line
